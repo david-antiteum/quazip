@@ -58,7 +58,7 @@ int zseek32(const zlib_filefunc64_32_def* pfilefunc, voidpf filestream, ZPOS64_T
 
 }
 
-int call_zseek64(const zlib_filefunc64_32_def* pfilefunc, voidpf filestream, ZPOS64_T offset, int origin)
+int qz_call_zseek64(const zlib_filefunc64_32_def* pfilefunc, voidpf filestream, ZPOS64_T offset, int origin)
 {
     auto func = pfilefunc->zfile_func64.zseek64_file != nullptr ? zseek64 : zseek32;
     return (*func)(pfilefunc, filestream, offset, origin);

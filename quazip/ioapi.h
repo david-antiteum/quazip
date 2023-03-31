@@ -191,14 +191,14 @@ typedef struct zlib_filefunc64_32_def_s
 #define ZERROR64(filefunc,filestream)             ((*((filefunc).zfile_func64.zerror_file))  ((filefunc).zfile_func64.opaque,filestream))
 
 voidpf qz_call_zopen64 OF((const zlib_filefunc64_32_def* pfilefunc,voidpf file,int mode));
-int    call_zseek64 OF((const zlib_filefunc64_32_def* pfilefunc,voidpf filestream, ZPOS64_T offset, int origin));
+int    qz_call_zseek64 OF((const zlib_filefunc64_32_def* pfilefunc,voidpf filestream, ZPOS64_T offset, int origin));
 ZPOS64_T qz_call_ztell64 OF((const zlib_filefunc64_32_def* pfilefunc,voidpf filestream));
 
 void    qz_fill_zlib_filefunc64_32_def_from_filefunc32(zlib_filefunc64_32_def* p_filefunc64_32,const zlib_filefunc_def* p_filefunc32);
 
 #define ZOPEN64(filefunc,filename,mode)         (qz_call_zopen64((&(filefunc)),(filename),(mode)))
 #define ZTELL64(filefunc,filestream)            (qz_call_ztell64((&(filefunc)),(filestream)))
-#define ZSEEK64(filefunc,filestream,pos,mode)   (call_zseek64((&(filefunc)),(filestream),(pos),(mode)))
+#define ZSEEK64(filefunc,filestream,pos,mode)   (qz_call_zseek64((&(filefunc)),(filestream),(pos),(mode)))
 
 #ifdef __cplusplus
 }
